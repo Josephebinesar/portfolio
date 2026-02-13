@@ -13,33 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 
-    ========================================
-    HOW TO RUN THIS PORTFOLIO:
-    ========================================
-    
-    LOCAL DEVELOPMENT:
-    1. Open index.html directly in your browser, OR
-    2. Use VS Code Live Server extension:
-       - Install "Live Server" extension in VS Code
-       - Right-click on index.html
-       - Select "Open with Live Server"
-    
-    DEPLOY TO GITHUB PAGES:
-    1. Create a new GitHub repository
-    2. Push these files (index.html, styles.css, script.js) to the repo
-    3. Go to Settings > Pages
-    4. Select branch: main, folder: / (root)
-    5. Click Save
-    6. Your site will be live at: https://[username].github.io/[repo-name]
-    
-    CUSTOMIZATION:
-    - Update resume file: Replace "Joseph_Ebinesar_Resume.pdf" with your actual resume
-    - Update project links: Add your actual GitHub repo URLs and live demo links
-    - Update images: Add project screenshots if needed
-    ========================================
-    -->
-
     <!-- Animated Background Blobs -->
     <div class="background-blobs">
         <div class="blob blob-1"></div>
@@ -63,7 +36,10 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
-                <a href="Joseph_Ebinesar_Resume.pdf" download class="btn-resume">Download Resume</a>
+                <!-- UPDATED: View + Download Resume -->
+                <a href="Joseph_Ebinesar_Resume.pdf" target="_blank" rel="noopener" class="btn-resume">View Resume</a>
+                <a href="Joseph_Ebinesar_Resume.pdf" download class="btn-resume">Download</a>
+
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -165,7 +141,6 @@
         <div class="container">
             <h2 class="section-title">Skills & Technologies</h2>
             <div class="skills-grid">
-                <!-- Languages -->
                 <div class="skill-category">
                     <div class="skill-category-header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -183,7 +158,6 @@
                     </div>
                 </div>
 
-                <!-- Python Libraries -->
                 <div class="skill-category">
                     <div class="skill-category-header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -200,7 +174,6 @@
                     </div>
                 </div>
 
-                <!-- Databases -->
                 <div class="skill-category">
                     <div class="skill-category-header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -215,7 +188,6 @@
                     </div>
                 </div>
 
-                <!-- Tools & Platforms -->
                 <div class="skill-category">
                     <div class="skill-category-header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -238,7 +210,7 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1: TRYONX:Virtual Clothing System -->
+
                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">Virtual Clothing System</h3>
@@ -275,7 +247,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Hospital Management System -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">Hospital Management System</h3>
@@ -312,7 +283,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Crop Management System -->
                 <div class="project-card">
                     <div class="project-header">
                         <h3 class="project-title">Crop Management System</h3>
@@ -348,6 +318,7 @@
                         </a>
                     </div>
                 </div>
+
             </div>
             <div class="projects-footer">
                 <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener noreferrer" class="link-arrow">
@@ -366,7 +337,6 @@
         <div class="container">
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
-                <!-- Experience 1 -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -383,7 +353,6 @@
                     </div>
                 </div>
 
-                <!-- Experience 2 -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -408,7 +377,6 @@
         <div class="container">
             <h2 class="section-title">Education</h2>
             <div class="education-grid">
-                <!-- Bachelor's Degree -->
                 <div class="education-card">
                     <div class="education-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -426,7 +394,6 @@
                     </div>
                 </div>
 
-                <!-- Higher Secondary -->
                 <div class="education-card">
                     <div class="education-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -444,7 +411,6 @@
                     </div>
                 </div>
 
-                <!-- SSLC -->
                 <div class="education-card">
                     <div class="education-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -470,28 +436,25 @@
         <div class="container">
             <h2 class="section-title">Achievements</h2>
             <div class="achievements-grid">
-                <!-- Achievement 1 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">🏆</div>
                     <h3>1st Prize - Gyan Disha 2025</h3>
-                    <p>State-level Technical Event</p>
+                    <!-- UPDATED -->
+                    <p>University-level Technical Event</p>
                 </div>
 
-                <!-- Achievement 2 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">💻</div>
                     <h3>Infosys Hackathon</h3>
                     <p>Participant</p>
                 </div>
 
-                <!-- Achievement 3 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">🚀</div>
                     <h3>Saveetha College Innovation Challenge</h3>
                     <p>Hackathon Participant</p>
                 </div>
 
-                <!-- Achievement 4 -->
                 <div class="achievement-card">
                     <div class="achievement-icon">⚡</div>
                     <h3>Hindustan Innothon</h3>
@@ -506,7 +469,6 @@
         <div class="container">
             <h2 class="section-title">Certifications</h2>
             <div class="certifications-grid">
-                <!-- Certification 1 -->
                 <div class="certification-card">
                     <div class="certification-badge">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -517,7 +479,6 @@
                     <p class="certification-issuer">MyCaptain</p>
                 </div>
 
-                <!-- Certification 2 -->
                 <div class="certification-card">
                     <div class="certification-badge">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -528,7 +489,6 @@
                     <p class="certification-issuer">MyCaptain</p>
                 </div>
 
-                <!-- Certification 3 -->
                 <div class="certification-card">
                     <div class="certification-badge">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
