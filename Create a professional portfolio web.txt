@@ -1,0 +1,296 @@
+Create a professional portfolio website for a software developer focused on job opportunities.
+The website should feel clean, modern, human-designed, and recruiter-friendly, using light colors and elegant spacing.
+
+The design should not look like a generic template. It should feel like a personal brand website for a developer and AI enthusiast.
+
+Use soft light color palettes like white, soft blue, light purple, and pastel gradients.
+
+The website must be fully responsive and optimized for desktop, tablet, and mobile.
+
+Include smooth animations and an always-running subtle animated background across the entire site. The background should feel modern and tech-inspired, such as:
+
+• slowly moving gradient waves
+• floating particles
+• subtle neural-network-style lines
+• soft glowing blobs
+
+The background animation should be smooth and not distracting so the content remains readable.
+
+Website Sections
+Hero Section
+
+Display:
+
+Joseph Ebinesar
+Computer Science Engineer
+
+Role:
+
+Python Developer | Machine Learning Enthusiast | Data Analyst
+
+Tagline:
+
+Building AI tools that solve real-world problems.
+
+Include:
+
+• circular professional profile photo
+• short introduction text
+• buttons:
+
+View Projects
+Download Resume
+Contact Me
+
+Add a typing animation showing:
+
+Python Developer
+Machine Learning Enthusiast
+Problem Solver
+AI Builder
+
+Quick Recruiter Highlights
+
+Add a 4-card highlight section under the hero.
+
+Cards:
+
+Skills
+Projects
+Education
+Open to Work
+
+Example:
+
+Skills
+Python, Machine Learning, Web Development
+
+Projects
+Real-world AI and full-stack applications
+
+Education
+Hindustan Institute of Technology and Science
+
+Open To
+Internships and entry-level developer roles
+
+About Me Section
+
+Short professional introduction:
+
+Joseph Ebinesar is a Computer Science Engineering student at Hindustan Institute of Technology and Science.
+He focuses on Python development, machine learning, and data analysis.
+
+He enjoys building AI-powered tools and practical applications that solve real-world problems.
+
+He is currently seeking opportunities to contribute to innovative teams and grow as a developer.
+
+Include a photo beside the text.
+
+Unique Skills Section (Make it Stand Out)
+
+Do NOT show skills as simple lists.
+
+Instead create an interactive animated skill visualization.
+
+Design ideas:
+
+Option 1 – Skill Galaxy
+Display skills as floating orbits around a central node labeled “Joseph’s Skill Set”.
+
+Categories orbiting around the center:
+
+Programming
+Python
+Java
+JavaScript
+
+Web Development
+HTML
+CSS
+Flask
+FastAPI
+
+Machine Learning & Data
+Machine Learning
+TensorFlow
+Data Analysis
+
+Tools
+Git
+MongoDB
+OpenCV
+
+Each skill node should:
+
+• glow on hover
+• show a short tooltip explaining the skill
+• slightly animate or float
+
+Option 2 – Skill Progress Cards
+
+Each card shows:
+
+Skill Name
+Experience Level
+Small animated progress bar
+
+Example:
+
+Python – Advanced
+Machine Learning – Intermediate
+Flask – Intermediate
+JavaScript – Intermediate
+Data Analysis – Intermediate
+
+Add hover animations and subtle glow effects.
+
+Featured Project Section
+
+Highlight this project prominently:
+
+FeelUp – Mental Health Social Platform
+
+Description:
+
+FeelUp is a platform designed to help people express emotions, share struggles, and receive community support.
+
+Key Features:
+
+Mood sharing
+Anonymous posts
+Community interaction
+AI emotional insights
+Event and mentorship features
+
+Live Demo:
+
+https://feelup.vercel.app/
+
+Display as a large project showcase card with animation and hover effects.
+
+More Projects Section
+
+Create a grid for additional projects.
+
+Each card should include:
+
+project image
+short description
+tech stack
+GitHub link
+
+Use modern hover animations.
+
+Achievements Section
+
+Include:
+
+Certifications:
+
+Full Stack Development
+Python Development
+Artificial Intelligence
+C++ Certificate – Bharathiar University
+
+Hackathons:
+
+Infosys Prompt Hackathon Participation
+Saveetha World First Prompt Hackathon Participation
+
+Add a photo gallery section where Joseph can upload photos of:
+
+certificates
+events
+hackathons
+project demos
+
+Photos should open in a lightbox view when clicked.
+
+Blog Section
+
+Create a modern blog preview area.
+
+Articles:
+
+How I Built FeelUp – A Mental Health Platform
+Beginner Guide to Building AI Projects with Python
+My Journey into Machine Learning
+Lessons from Building My First Startup Project
+
+Each blog card should include:
+
+image
+title
+short description
+read more button
+
+Resume Section
+
+Include:
+
+Download Resume button (PDF)
+
+Also include a resume preview layout showing:
+
+education
+skills
+projects
+certifications
+
+Contact Section
+
+Display contact information clearly.
+
+Email
+josephebinesarofficial@gmail.com
+
+LinkedIn
+https://www.linkedin.com/in/josephebinesar/
+
+GitHub
+https://github.com/Josephebinesar
+
+Phone
++91 7708976094
+
+Include a contact form with:
+
+Name
+Email
+Message
+
+Footer
+
+Simple professional footer with:
+
+Joseph Ebinesar
+Quick navigation links
+Social icons
+
+Text:
+
+© 2026 Joseph Ebinesar — Built with passion for AI and innovation.
+
+Animation Requirements
+
+Include:
+
+• smooth scroll animations
+• fade-in section transitions
+• hover effects on cards
+• animated skill elements
+• glowing buttons
+• floating background particles
+
+Animations should be professional and smooth, not overwhelming.
+
+Design Goals
+
+The final website should feel like a modern developer personal brand site that helps Joseph get hired as:
+
+• Python Developer
+• Machine Learning Engineer
+• Data Analyst
+
+The design must look professional, polished, and human-crafted.
