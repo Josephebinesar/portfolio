@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Joseph Ebinesar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* ── Admin-specific styles ── */
+        body { min-height: 100vh; }
+
+        /* ──────────────────────────────────
+           LOGIN SCREEN
+        ────────────────────────────────── */
+        #loginScreen {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 2rem;
+        }
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0,245,212,.2);
+            border-radius: var(--radius-2xl);
+            padding: 3rem 2.5rem;
+            width: 100%; max-width: 420px;
+            box-shadow: 0 0 60px rgba(0,245,212,.08), 0 24px 60px rgba(0,0,0,.5);
+            position: relative; overflow: hidden;
+        }
+        .login-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--accent-gradient);
+        }
+        body.light-mode .login-card { background: #fff; border-color: rgba(51,84,212,.22); box-shadow: 0 0 40px rgba(51,84,212,.1), 0 24px 60px rgba(51,84,212,.12); }
+
+        .login-logo {
+            text-align: center; margin-bottom: 2rem;
+        }
+        .login-logo-icon {
+            font-size: 3rem; display: block; margin-bottom: .5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        .login-logo h1 {
+            font-family: var(--font-display); font-size: 1.6rem; font-weight: 900;
+            background: var(--accent-gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: .25rem;
+        }
+        .login-logo p { font-size: .85rem; color: var(--text-muted); }
+
+        .form-field { margin-bottom: 1.25rem; }
+        .form-field label { display: block; font-size: .82rem; font-weight: 700; color: var(--text-secondary); margin-bottom: .5rem; letter-spacing: .04em; }
+        .form-field input {
+            width: 100%; padding: .8rem 1rem;
+            background: var(--bg-tertiary); border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-lg); color: var(--text-primary);
+            font-family: var(--font-primary); font-size: .9rem;
+            transition: all var(--transition-fast); outline: none;
+        }
+        .form-field input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(0,245,212,.12); }
+        body.light-mode .form-field input { background: #f5f7ff; border-color: rgba(51,84,212,.22); color: var(--text-primary); }
+        body.light-mode .form-field input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(51,84,212,.1); }
+
+        .login-btn {
+            width: 100%; padding: .9rem;
+            background: var(--accent-gradient); color: #fff;
+            border: none; border-radius: var(--radius-lg);
+            font-family: var(--font-primary); font-size: .95rem; font-weight: 700;
+            cursor: pointer; transition: all var(--transition-fast);
+            margin-top: .5rem;
+        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow-cyan); }
+        .login-error {
+            display: none; margin-top: 1rem; padding: .75rem 1rem;
+            background: rgba(247,37,133,.1); border: 1px solid rgba(247,37,133,.3);
+            border-radius: var(--radius-lg); font-size: .85rem; color: var(--accent-pink);
+            text-align: center;
+        }
+        body.light-mode .login-error { color: #d01f72; background: rgba(208,31,114,.08); border-color: rgba(208,31,114,.28); }
+        .login-back { display: block; text-align: center; margin-top: 1.5rem; font-size: .82rem; color: var(--text-muted); text-decoration: none; transition: color var(--transition-fast); }
+        .login-back:hover { color: var(--accent-cyan); }
+        body.light-mode .login-back:hover { color: var(--accent-blue); }
+
+        /* ──────────────────────────────────
+           DASHBOARD
+        ────────────────────────────────── */
+        #dashboard { display: none; }
+        .dash-nav {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+        }
+        body.light-mode .dash-nav { background: #eceffe; border-bottom-color: rgba(51,84,212,.18); }
+        .dash-nav-title {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 900;
+            background: var(--accent-gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .dash-nav-actions { display: flex; gap: .75rem; align-items: center; }
+        .dash-logout {
+            padding: .4rem .9rem; border: 1px solid rgba(247,37,133,.35);
+            background: rgba(247,37,133,.08); color: var(--accent-pink);
+            border-radius: var(--radius-full); font-size: .8rem; font-weight: 700;
+            cursor: pointer; transition: all var(--transition-fast);
+        }
+        .dash-logout:hover { background: var(--accent-pink); color: #fff; }
+
+        .dash-body { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+        .dash-tabs { display: flex; gap: .5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-color); }
+        .dash-tab {
+            padding: .65rem 1.5rem; font-weight: 700; font-size: .88rem;
+            border: none; background: none; color: var(--text-muted);
+            cursor: pointer; border-bottom: 2px solid transparent;
+            margin-bottom: -1px; transition: all var(--transition-fast);
+        }
+        .dash-tab.active { color: var(--accent-cyan); border-bottom-color: var(--accent-cyan); }
+        body.light-mode .dash-tab.active { color: var(--accent-blue); border-bottom-color: var(--accent-blue); }
+        .dash-tab:hover { color: var(--text-primary); }
+
+        .dash-panel { display: none; }
+        .dash-panel.active { display: block; }
+
+        /* Add form */
+        .add-form {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius-2xl); padding: 2rem; margin-bottom: 2.5rem;
+            position: relative; overflow: hidden;
+        }
+        .add-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-gradient); }
+        body.light-mode .add-form { background: #fff; border-color: rgba(51,84,212,.18); }
+        .add-form h3 { font-size: 1rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-primary); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-row.full { grid-template-columns: 1fr; }
+        .add-form .field { margin-bottom: 1rem; }
+        .add-form .field label { display: block; font-size: .78rem; font-weight: 700; color: var(--text-muted); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .08em; }
+        .add-form .field input,
+        .add-form .field textarea,
+        .add-form .field select {
+            width: 100%; padding: .7rem 1rem;
+            background: var(--bg-tertiary); border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-lg); color: var(--text-primary);
+            font-family: var(--font-primary); font-size: .88rem;
+            transition: all var(--transition-fast); outline: none;
+        }
+        .add-form .field textarea { min-height: 90px; resize: vertical; }
+        .add-form .field input:focus,
+        .add-form .field textarea:focus,
+        .add-form .field select:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(0,245,212,.1); }
+        body.light-mode .add-form .field input,
+        body.light-mode .add-form .field textarea,
+        body.light-mode .add-form .field select { background: #f5f7ff; border-color: rgba(51,84,212,.2); color: var(--text-primary); }
+        body.light-mode .add-form .field input:focus,
+        body.light-mode .add-form .field textarea:focus,
+        body.light-mode .add-form .field select:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(51,84,212,.08); }
+        .add-form .field select { cursor: pointer; }
+
+        /* Items list */
+        .items-list { display: flex; flex-direction: column; gap: 1rem; }
+        .item-row {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl); padding: 1.1rem 1.25rem;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; flex-wrap: wrap;
+            transition: all var(--transition-fast);
+        }
+        .item-row:hover { border-color: rgba(0,245,212,.3); }
+        body.light-mode .item-row { background: #fff; border-color: rgba(51,84,212,.14); }
+        body.light-mode .item-row:hover { border-color: rgba(51,84,212,.38); }
+        .item-info { flex: 1; }
+        .item-emoji { font-size: 1.4rem; margin-right: .5rem; }
+        .item-title { font-size: .93rem; font-weight: 800; color: var(--text-primary); }
+        .item-meta { font-size: .78rem; color: var(--text-muted); margin-top: .2rem; }
+        .item-del {
+            padding: .3rem .7rem; border: 1px solid rgba(247,37,133,.3);
+            background: rgba(247,37,133,.07); color: var(--accent-pink);
+            border-radius: var(--radius-full); font-size: .75rem; font-weight: 700;
+            cursor: pointer; transition: all var(--transition-fast);
+        }
+        .item-del:hover { background: var(--accent-pink); color: #fff; }
+        .empty-state { text-align: center; color: var(--text-muted); padding: 3rem; font-size: .9rem; }
+        .success-msg {
+            display: none; padding: .7rem 1rem;
+            background: rgba(0,245,212,.1); border: 1px solid rgba(0,245,212,.3);
+            border-radius: var(--radius-lg); font-size: .85rem; color: var(--accent-cyan);
+            margin-top: 1rem; text-align: center;
+        }
+        body.light-mode .success-msg { background: rgba(51,84,212,.08); border-color: rgba(51,84,212,.28); color: var(--accent-blue); }
+
+        @media(max-width:600px) { .form-row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════════════
+         LOGIN SCREEN
+    ══════════════════════════════ -->
+    <div id="loginScreen">
+        <!-- Blobs -->
+        <div class="blob blob-1" style="position:fixed;top:-100px;left:-100px;width:500px;height:500px;border-radius:50%;background:var(--accent-cyan);opacity:.06;filter:blur(110px);pointer-events:none;z-index:-1;"></div>
+        <div class="blob blob-2" style="position:fixed;bottom:-100px;right:-100px;width:450px;height:450px;border-radius:50%;background:var(--accent-pink);opacity:.05;filter:blur(110px);pointer-events:none;z-index:-1;"></div>
+
+        <div class="login-card">
+            <div class="login-logo">
+                <span class="login-logo-icon">🔐</span>
+                <h1>Admin Portal</h1>
+                <p>Joseph Ebinesar · Portfolio CMS</p>
+            </div>
+
+            <div class="form-field">
+                <label for="loginUser">Email</label>
+                <input type="email" id="loginUser" placeholder="josephebinesarofficial@gmail.com" autocomplete="username">
+            </div>
+            <div class="form-field">
+                <label for="loginPass">Password</label>
+                <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password">
+            </div>
+
+            <button class="login-btn" onclick="doLogin()">Sign In →</button>
+            <div class="login-error" id="loginError">❌ Invalid username or password</div>
+
+            <a href="blog.html" class="login-back">← Back to Blog</a>
+
+            <!-- Theme toggle -->
+            <div style="text-align:center;margin-top:1.5rem;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" style="margin:0 auto;">🌙</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         DASHBOARD
+    ══════════════════════════════ -->
+    <div id="dashboard">
+        <nav class="dash-nav">
+            <span class="dash-nav-title">🛠️ Content Manager</span>
+            <div class="dash-nav-actions">
+                <a href="blog.html" class="btn btn-ghost" style="font-size:.82rem;padding:.4rem .9rem;">View Blog →</a>
+                <button class="theme-toggle" id="themeToggle2" aria-label="Toggle theme">🌙</button>
+                <button class="dash-logout" onclick="doLogout()">Logout</button>
+            </div>
+        </nav>
+
+        <div class="dash-body">
+            <div class="dash-tabs">
+                <button class="dash-tab active" onclick="switchTab('articles',this)">✍️ Articles</button>
+                <button class="dash-tab" onclick="switchTab('videos',this)">▶ YouTube Videos</button>
+            </div>
+
+            <!-- ── Articles Panel ── -->
+            <div class="dash-panel active" id="panel-articles">
+                <div class="add-form">
+                    <h3>➕ Add New Article</h3>
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Title *</label>
+                            <input type="text" id="art-title" placeholder="Article title">
+                        </div>
+                        <div class="field">
+                            <label>Category</label>
+                            <select id="art-cat">
+                                <option>Tutorial</option>
+                                <option>Personal Story</option>
+                                <option>Journey</option>
+                                <option>Project Deep-Dive</option>
+                                <option>Data Science</option>
+                                <option>Career</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Date</label>
+                            <input type="text" id="art-date" placeholder="e.g. May 2026">
+                        </div>
+                        <div class="field">
+                            <label>Emoji Icon</label>
+                            <input type="text" id="art-emoji" placeholder="e.g. 🚀" maxlength="4">
+                        </div>
+                    </div>
+                    <div class="form-row full">
+                        <div class="field">
+                            <label>Summary *</label>
+                            <textarea id="art-summary" placeholder="Short description of the article (2–3 sentences)"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row full">
+                        <div class="field">
+                            <label>Article Link (optional)</label>
+                            <input type="url" id="art-link" placeholder="https://medium.com/... or leave blank">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addArticle()">Publish Article</button>
+                    <div class="success-msg" id="art-success">✅ Article published! Refresh the blog page to see it.</div>
+                </div>
+
+                <h3 style="font-size:.9rem;font-weight:800;color:var(--text-muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.1em;">Published Articles</h3>
+                <div class="items-list" id="articles-list">
+                    <div class="empty-state">No custom articles yet. Add one above!</div>
+                </div>
+            </div>
+
+            <!-- ── Videos Panel ── -->
+            <div class="dash-panel" id="panel-videos">
+                <div class="add-form">
+                    <h3>➕ Add YouTube Video</h3>
+                    <div class="form-row full">
+                        <div class="field">
+                            <label>YouTube Video URL *</label>
+                            <input type="text" id="vid-url"
+                                placeholder="Paste full YouTube link — e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                                oninput="previewYT(this.value)">
+                            <div id="yt-preview" style="margin-top:.75rem;border-radius:.75rem;overflow:hidden;display:none;">
+                                <iframe id="yt-preview-frame" width="100%" height="200"
+                                    style="border:none;border-radius:.75rem;" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Video Title *</label>
+                            <input type="text" id="vid-title" placeholder="e.g. Python Tutorial for Beginners">
+                        </div>
+                        <div class="field">
+                            <label>Short Description</label>
+                            <input type="text" id="vid-desc" placeholder="One-line summary of the video">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addVideo()">▶ Add Video to Blog</button>
+                    <div class="success-msg" id="vid-success">✅ Video added! Refresh the blog page to see it.</div>
+                    <p style="font-size:.75rem;color:var(--text-muted);margin-top:.75rem;">
+                        💡 Go to your YouTube video → copy the URL from the browser address bar → paste it above.
+                    </p>
+                </div>
+
+                <h3 style="font-size:.9rem;font-weight:800;color:var(--text-muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.1em;">Published Videos</h3>
+                <div class="items-list" id="videos-list">
+                    <div class="empty-state">No custom videos yet. Add one above!</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Apply saved theme immediately
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+        // ── Credentials ──
+        const ADMIN_USER = 'josephebinesarofficial@gmail.com';
+        const ADMIN_PASS = '7708976094@Joseph';
+
+        // ── Theme toggle ──
+        function syncThemeBtns() {
+            const isDark = !document.body.classList.contains('light-mode');
+            document.querySelectorAll('.theme-toggle, #themeToggle, #themeToggle2').forEach(b => {
+                b.textContent = isDark ? '🌙' : '☀️';
+            });
+        }
+        document.querySelectorAll('#themeToggle, #themeToggle2').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+                syncThemeBtns();
+            });
+        });
+
+        // ── Login ──
+        function doLogin() {
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value;
+            if (u === ADMIN_USER && p === ADMIN_PASS) {
+                sessionStorage.setItem('je_admin', '1');
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                loadLists();
+            } else {
+                const err = document.getElementById('loginError');
+                err.style.display = 'block';
+                setTimeout(() => err.style.display = 'none', 3000);
+            }
+        }
+        document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+        function doLogout() {
+            sessionStorage.removeItem('je_admin');
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('loginUser').value = '';
+            document.getElementById('loginPass').value = '';
+        }
+
+        // Auto-login if session active
+        if (sessionStorage.getItem('je_admin')) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            setTimeout(loadLists, 0);
+        }
+
+        // ── Tabs ──
+        function switchTab(name, el) {
+            document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('panel-' + name).classList.add('active');
+        }
+
+        // ── Articles ──
+        function addArticle() {
+            const title   = document.getElementById('art-title').value.trim();
+            const summary = document.getElementById('art-summary').value.trim();
+            if (!title || !summary) { alert('Title and Summary are required!'); return; }
+            const article = {
+                id: Date.now(),
+                title,
+                summary,
+                category: document.getElementById('art-cat').value,
+                date:     document.getElementById('art-date').value.trim() || new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'}),
+                emoji:    document.getElementById('art-emoji').value.trim() || '📝',
+                link:     document.getElementById('art-link').value.trim(),
+            };
+            const list = JSON.parse(localStorage.getItem('je_articles') || '[]');
+            list.unshift(article);
+            localStorage.setItem('je_articles', JSON.stringify(list));
+            ['art-title','art-summary','art-date','art-emoji','art-link'].forEach(id => document.getElementById(id).value = '');
+            const s = document.getElementById('art-success');
+            s.style.display = 'block'; setTimeout(() => s.style.display = 'none', 3000);
+            loadLists();
+        }
+
+        // ── Extract YouTube Video ID from any URL ──
+        function extractYTId(url) {
+            url = url.trim();
+            var m;
+            // youtu.be/ID
+            m = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+            if (m) return m[1];
+            // youtube.com/shorts/ID
+            m = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
+            if (m) return m[1];
+            // ?v=ID  or  &v=ID
+            m = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
+            if (m) return m[1];
+            // embed/ID
+            m = url.match(/embed\/([a-zA-Z0-9_-]{11})/);
+            if (m) return m[1];
+            // bare 11-char ID
+            m = url.match(/^([a-zA-Z0-9_-]{11})$/);
+            if (m) return m[1];
+            return null;
+        }
+
+        // ── Live preview as user types URL ──
+        function previewYT(url) {
+            var id = extractYTId(url);
+            var wrap  = document.getElementById('yt-preview');
+            var frame = document.getElementById('yt-preview-frame');
+            if (id) {
+                frame.src = 'https://www.youtube.com/embed/' + id;
+                wrap.style.display = 'block';
+            } else {
+                wrap.style.display = 'none';
+                frame.src = '';
+            }
+        }
+
+        // ── Videos ──
+        function addVideo() {
+            var url   = (document.getElementById('vid-url')   || {value:''}).value.trim();
+            var title = (document.getElementById('vid-title') || {value:''}).value.trim();
+            var desc  = (document.getElementById('vid-desc')  || {value:''}).value.trim();
+
+            var youtubeId = extractYTId(url);
+
+            if (!title) { alert('Please enter a video title!'); return; }
+            if (!youtubeId && url) { alert('Could not find a valid YouTube video ID in that URL.\nMake sure it looks like:\nhttps://www.youtube.com/watch?v=XXXXXXXXXXX'); return; }
+
+            var video = { id: Date.now(), title: title, youtubeId: youtubeId || '', desc: desc };
+            var list = JSON.parse(localStorage.getItem('je_videos') || '[]');
+            list.unshift(video);
+            localStorage.setItem('je_videos', JSON.stringify(list));
+
+            // Clear form
+            ['vid-url','vid-title','vid-desc'].forEach(function(id) {
+                var el = document.getElementById(id); if (el) el.value = '';
+            });
+            var prev = document.getElementById('yt-preview');
+            if (prev) prev.style.display = 'none';
+
+            var s = document.getElementById('vid-success');
+            s.style.display = 'block'; setTimeout(function(){ s.style.display = 'none'; }, 3500);
+            loadLists();
+        }
+
+        function deleteItem(type, id) {
+            const key  = type === 'article' ? 'je_articles' : 'je_videos';
+            const list = JSON.parse(localStorage.getItem(key) || '[]').filter(x => x.id !== id);
+            localStorage.setItem(key, JSON.stringify(list));
+            loadLists();
+        }
+
+        function loadLists() {
+            const articles = JSON.parse(localStorage.getItem('je_articles') || '[]');
+            const videos   = JSON.parse(localStorage.getItem('je_videos')   || '[]');
+            const artEl = document.getElementById('articles-list');
+            const vidEl = document.getElementById('videos-list');
+
+            if (articles.length === 0) {
+                artEl.innerHTML = '<div class="empty-state">No custom articles yet. Add one above!</div>';
+            } else {
+                artEl.innerHTML = articles.map(a => `
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-emoji">${a.emoji}</span>
+                            <span class="item-title">${a.title}</span>
+                            <div class="item-meta">${a.category} · ${a.date}${a.link ? ' · <a href="'+a.link+'" target="_blank" style="color:var(--accent-cyan)">Link</a>' : ''}</div>
+                        </div>
+                        <button class="item-del" onclick="deleteItem('article',${a.id})">Delete</button>
+                    </div>`).join('');
+            }
+
+            if (videos.length === 0) {
+                vidEl.innerHTML = '<div class="empty-state">No custom videos yet. Add one above!</div>';
+            } else {
+                vidEl.innerHTML = videos.map(v => `
+                    <div class="item-row">
+                        <div class="item-info">
+                            <span class="item-emoji">▶</span>
+                            <span class="item-title">${v.title}</span>
+                            <div class="item-meta">${v.youtubeId ? 'ID: '+v.youtubeId : 'No embed ID'}</div>
+                        </div>
+                        <button class="item-del" onclick="deleteItem('video',${v.id})">Delete</button>
+                    </div>`).join('');
+            }
+        }
+    </script>
+</body>
+</html>

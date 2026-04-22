@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Ebinesar's Resume – AI Engineer, Machine Learning Engineer, Software Developer. B.Tech CSE, HITS Chennai.">
+    <title>Resume | Joseph Ebinesar – AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .page-hero { padding: 9rem 1.5rem 4rem; }
+        .resume-header {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;
+        }
+        .resume-header h1 {
+            font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.6rem);
+            font-weight: 900; background: var(--accent-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .resume-header p { color: var(--text-secondary); font-size: .95rem; margin-top: .3rem; }
+        .resume-dl-group { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+        /* PDF viewer */
+        .pdf-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius-2xl); overflow: hidden; margin-bottom: 3rem;
+        }
+        body.light-mode .pdf-card { background: #fff; border-color: rgba(51,84,212,.2); }
+        .pdf-toolbar {
+            padding: 1rem 1.5rem;
+            background: var(--bg-tertiary); border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem;
+        }
+        body.light-mode .pdf-toolbar { background: #e8ecff; border-bottom-color: rgba(51,84,212,.15); }
+        .pdf-toolbar-label { font-size: .85rem; font-weight: 600; color: var(--text-secondary); display: flex; align-items: center; gap: .5rem; }
+        .pdf-ctrl { display: flex; gap: .5rem; }
+        .pdf-btn {
+            padding: .35rem .8rem; border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg); background: none; color: var(--text-muted);
+            font-size: .78rem; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; gap: .3rem;
+            transition: all var(--transition-fast);
+        }
+        .pdf-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        body.light-mode .pdf-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .pdf-frame { width: 100%; height: 82vh; border: none; display: block; }
+
+        /* Highlights grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .hl-full { grid-column: 1 / -1; }
+        .hl-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl); padding: 1.5rem;
+            transition: all var(--transition-base);
+        }
+        .hl-card:hover { border-color: rgba(0,245,212,.4); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.4), 0 0 16px rgba(0,245,212,.08); }
+        body.light-mode .hl-card { background: #fff; border-color: rgba(51,84,212,.15); }
+        body.light-mode .hl-card:hover { border-color: rgba(51,84,212,.45); box-shadow: 0 12px 36px rgba(51,84,212,.12); }
+
+        .hl-title {
+            font-size: .72rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: .12em; color: var(--accent-cyan);
+            display: flex; align-items: center; gap: .4rem; margin-bottom: 1.1rem;
+        }
+        body.light-mode .hl-title { color: var(--accent-blue); }
+        .hl-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-cyan); }
+        body.light-mode .hl-dot { background: var(--accent-blue); }
+
+        /* Experience */
+        .exp-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+        .exp-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .3rem; margin-bottom: .25rem; }
+        .exp-role { font-size: .92rem; font-weight: 800; color: var(--text-primary); }
+        .exp-date { font-size: .75rem; color: var(--accent-cyan); font-weight: 700; }
+        body.light-mode .exp-date { color: var(--accent-blue); }
+        .exp-company { font-size: .82rem; color: var(--accent-pink); font-weight: 700; margin-bottom: .4rem; }
+        body.light-mode .exp-company { color: #d01f72; }
+        .exp-list { list-style: none; font-size: .82rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: .25rem; }
+        .exp-list li { padding-left: 1.1rem; position: relative; }
+        .exp-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-cyan); font-size: .75rem; }
+        body.light-mode .exp-list li::before { color: var(--accent-blue); }
+
+        /* Education */
+        .edu-item { margin-bottom: .8rem; }
+        .edu-degree { font-size: .9rem; font-weight: 800; color: var(--text-primary); }
+        .edu-school { font-size: .82rem; color: var(--accent-cyan); font-weight: 600; }
+        body.light-mode .edu-school { color: var(--accent-blue); }
+        .edu-meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .78rem; color: var(--text-muted); margin-top: .3rem; }
+        .edu-grade { color: var(--accent-gold); font-weight: 700; }
+        body.light-mode .edu-grade { color: var(--accent-gold); }
+
+        /* Skills tags */
+        .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .75rem; }
+        .skill-tag {
+            padding: .25rem .7rem;
+            background: var(--bg-tertiary); border: 1px solid var(--border-color);
+            border-radius: var(--radius-full); font-size: .75rem; font-weight: 600;
+            color: var(--text-secondary); transition: all var(--transition-fast);
+        }
+        .skill-tag:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .skill-tag.hl { border-color: rgba(0,245,212,.35); color: var(--accent-cyan); }
+        body.light-mode .skill-tag { background: #f0f4ff; border-color: rgba(51,84,212,.18); color: var(--text-secondary); }
+        body.light-mode .skill-tag:hover, body.light-mode .skill-tag.hl { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .skill-group-label { font-size: .7rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem; }
+
+        /* Certs */
+        .cert-row { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--border-color); }
+        .cert-row:last-child { border-bottom: none; }
+        .cert-name { font-size: .88rem; font-weight: 700; color: var(--text-primary); }
+        .cert-issuer { font-size: .78rem; color: var(--text-muted); }
+        .cert-badge { padding: .2rem .65rem; background: rgba(0,245,212,.1); border-radius: var(--radius-full); font-size: .7rem; color: var(--accent-cyan); font-weight: 700; }
+        body.light-mode .cert-badge { background: rgba(51,84,212,.09); color: var(--accent-blue); }
+
+        /* Achievements mini */
+        .ach-row { display: flex; align-items: center; gap: .75rem; padding: .55rem 0; border-bottom: 1px solid var(--border-color); }
+        .ach-row:last-child { border-bottom: none; }
+        .ach-icon { font-size: 1.25rem; }
+        .ach-text strong { font-size: .88rem; font-weight: 800; display: block; color: var(--text-primary); }
+        .ach-text span { font-size: .78rem; color: var(--text-muted); }
+
+        /* CTA row */
+        .cta-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.25rem; margin-bottom: 3rem; }
+        .cta-mini {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl); padding: 1.5rem; text-align: center;
+            transition: all var(--transition-base);
+        }
+        .cta-mini:hover { border-color: rgba(0,245,212,.4); transform: translateY(-4px); }
+        body.light-mode .cta-mini { background: #fff; border-color: rgba(51,84,212,.16); }
+        body.light-mode .cta-mini:hover { border-color: rgba(51,84,212,.45); }
+        .cta-mini h3 { font-size: 1rem; font-weight: 800; margin-bottom: .35rem; }
+        .cta-mini p { font-size: .85rem; color: var(--text-secondary); margin-bottom: 1rem; }
+
+        @media(max-width:768px) {
+            .highlights-grid { grid-template-columns: 1fr; }
+            .hl-full { grid-column: auto; }
+            .pdf-frame { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navbar ── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>JE<span class="logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="blog.html" class="nav-link">Blog / YouTube</a>
+                <a href="resume.html" class="nav-link active">Resume</a>
+                <a href="../index.html#contact" class="nav-link btn btn-primary" style="padding:.4rem 1rem;">Contact</a>
+            </div>
+            <div style="display:flex;gap:.5rem;align-items:center;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Page hero ── -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="resume-header">
+                <div>
+                    <h1>Joseph Ebinesar's Resume</h1>
+                    <p>AI Engineer · Machine Learning Engineer · Software Developer · Chennai, India</p>
+                </div>
+                <div class="resume-dl-group">
+                    <a href="../Joseph_Ebinesar_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open PDF
+                    </a>
+                    <a href="../Joseph_Ebinesar_Resume.pdf" download="Joseph_Ebinesar_Resume.pdf" class="btn btn-primary">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF Viewer -->
+            <div class="pdf-card reveal-card">
+                <div class="pdf-toolbar">
+                    <span class="pdf-toolbar-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Joseph_Ebinesar_Resume.pdf
+                    </span>
+                    <div class="pdf-ctrl">
+                        <a href="../Joseph_Ebinesar_Resume.pdf" target="_blank" rel="noopener" class="pdf-btn">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Open
+                        </a>
+                        <a href="../Joseph_Ebinesar_Resume.pdf" download class="pdf-btn">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download
+                        </a>
+                    </div>
+                </div>
+                <iframe src="../Joseph_Ebinesar_Resume.pdf" class="pdf-frame" title="Joseph Ebinesar Resume" id="resumeFrame"></iframe>
+            </div>
+
+            <!-- Resume Highlights -->
+            <h2 class="section-title" style="margin-bottom:1.5rem;">Resume Highlights</h2>
+            <div class="highlights-grid">
+
+                <!-- Experience (full width) -->
+                <div class="hl-card hl-full reveal-card">
+                    <div class="hl-title"><div class="hl-dot"></div> Professional Experience</div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-role">Machine Learning Intern</span>
+                            <span class="exp-date">Dec 2025 – Feb 2026</span>
+                        </div>
+                        <div class="exp-company">VCodes</div>
+                        <ul class="exp-list">
+                            <li>Developed predictive models using Python with focus on preprocessing and feature engineering</li>
+                            <li>Performed NumPy/Pandas analysis on large datasets, improving model accuracy by 15%</li>
+                            <li>Documented workflows and deployment strategies for production-ready ML pipelines</li>
+                        </ul>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-role">Full Stack Development Intern</span>
+                            <span class="exp-date">June 2024</span>
+                        </div>
+                        <div class="exp-company">CodSoft</div>
+                        <ul class="exp-list">
+                            <li>Built responsive UI components using HTML/CSS/JavaScript with mobile-first approach</li>
+                            <li>Assisted in backend logic development and MySQL database connectivity</li>
+                            <li>Improved code maintainability and cross-browser compatibility through best practices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="hl-card reveal-card">
+                    <div class="hl-title"><div class="hl-dot"></div> Education</div>
+                    <div class="edu-item">
+                        <div class="edu-degree">B.Tech – Computer Science Engineering</div>
+                        <div class="edu-school">Hindustan Institute of Technology & Science</div>
+                        <div class="edu-meta"><span>2022 – 2026 (Expected)</span><span class="edu-grade">CGPA: 8.23 / 10</span></div>
+                    </div>
+                    <hr style="border-color:var(--border-color);margin:.75rem 0;">
+                    <div class="edu-item">
+                        <div class="edu-degree">Higher Secondary – ISC</div>
+                        <div class="edu-meta"><span>2022</span><span class="edu-grade">78.2%</span></div>
+                    </div>
+                    <hr style="border-color:var(--border-color);margin:.75rem 0;">
+                    <div class="edu-item">
+                        <div class="edu-degree">SSLC – ICSE</div>
+                        <div class="edu-meta"><span>2020</span><span class="edu-grade">72.5%</span></div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="hl-card reveal-card">
+                    <div class="hl-title"><div class="hl-dot"></div> Technical Skills</div>
+                    <div class="skill-group-label">Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag hl">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                    <div class="skill-group-label">AI / ML Stack</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag hl">TensorFlow</span>
+                        <span class="skill-tag hl">scikit-learn</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">NLTK</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                    <div class="skill-group-label">Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">Supabase</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="hl-card reveal-card">
+                    <div class="hl-title"><div class="hl-dot"></div> Certifications</div>
+                    <div class="cert-row">
+                        <div><div class="cert-name">Data Analysis & Python Developer</div><div class="cert-issuer">MyCaptain</div></div>
+                        <span class="cert-badge">Certified</span>
+                    </div>
+                    <div class="cert-row">
+                        <div><div class="cert-name">AI & Full Stack Developer</div><div class="cert-issuer">MyCaptain</div></div>
+                        <span class="cert-badge">Certified</span>
+                    </div>
+                    <div class="cert-row">
+                        <div><div class="cert-name">C++ Certification</div><div class="cert-issuer">Bharathiar University (SUITS)</div></div>
+                        <span class="cert-badge">Certified</span>
+                    </div>
+                </div>
+
+                <!-- Achievements (full width) -->
+                <div class="hl-card hl-full reveal-card">
+                    <div class="hl-title"><div class="hl-dot"></div> Achievements</div>
+                    <div class="ach-row">
+                        <span class="ach-icon">🏆</span>
+                        <div class="ach-text"><strong>1st Prize – Gyan Disha 2025</strong><span>University-level Technical Event · HITS Chennai</span></div>
+                    </div>
+                    <div class="ach-row">
+                        <span class="ach-icon">💻</span>
+                        <div class="ach-text"><strong>Infosys Hackathon</strong><span>Enterprise AI Solutions Sprint · 2024</span></div>
+                    </div>
+                    <div class="ach-row">
+                        <span class="ach-icon">🚀</span>
+                        <div class="ach-text"><strong>Saveetha Innovation Challenge</strong><span>Hackathon Participant · 2024</span></div>
+                    </div>
+                    <div class="ach-row">
+                        <span class="ach-icon">🤖</span>
+                        <div class="ach-text"><strong>Google Thinkathon</strong><span>Innovation Challenge · 2024</span></div>
+                    </div>
+                    <div class="ach-row">
+                        <span class="ach-icon">📄</span>
+                        <div class="ach-text"><strong>Research Paper – FeelUp</strong><span>AI Powered Emotion Sharing & Support Platform · HITS 2025</span></div>
+                    </div>
+                </div>
+
+            </div><!-- /highlights-grid -->
+
+            <!-- CTA row -->
+            <div class="cta-row">
+                <div class="cta-mini reveal-card">
+                    <h3>📧 Hire Me</h3>
+                    <p>Open to AI/ML engineering roles and collaborations.</p>
+                    <a href="mailto:josephebinesarofficial@gmail.com" class="btn btn-primary">Send Email</a>
+                </div>
+                <div class="cta-mini reveal-card">
+                    <h3>💼 View Projects</h3>
+                    <p>See the AI & ML projects I've built — including FeelUp.</p>
+                    <a href="../index.html#projects" class="btn btn-primary">See Projects</a>
+                </div>
+                <div class="cta-mini reveal-card">
+                    <h3>🐙 GitHub</h3>
+                    <p>Explore my repos, contributions, and open-source work.</p>
+                    <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="btn btn-primary">Visit GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <p style="color:var(--text-muted);font-size:.85rem;">
+                © 2026 <a href="../index.html" style="color:var(--accent-cyan);text-decoration:none;">Joseph Ebinesar</a>
+                · AI Engineer ·
+                <a href="mailto:josephebinesarofficial@gmail.com" style="color:var(--accent-cyan);text-decoration:none;">josephebinesarofficial@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
