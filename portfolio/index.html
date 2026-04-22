@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Joseph Ebinesar - Software Developer Portfolio. Python, Web Development, MySQL. Final-year CSE student seeking Software Developer roles.">
-    <meta name="keywords" content="Joseph Ebinesar, Software Developer, Python Developer, Web Developer, Portfolio">
+    <meta name="description" content="Joseph Ebinesar – AI Engineer, Machine Learning Engineer & Software Developer. Creator of FeelUp AI Mental Health Platform. HITS Chennai.">
+    <meta name="keywords" content="Joseph Ebinesar, AI Engineer, Machine Learning, FeelUp, Python, TensorFlow, NLP, Portfolio">
     <meta name="author" content="Joseph Ebinesar">
-    <title>Joseph Ebinesar | Software Developer Portfolio</title>
+    <title>Joseph Ebinesar | AI Engineer &amp; ML Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Visitor Counter Badge -->
+    <div class="visitor-badge" id="visitorBadge">
+        <span class="visitor-icon">👁️</span>
+        <span class="visitor-label">Total Visitors</span>
+        <span class="visitor-count" id="visitorCount">0</span>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
     <!-- Animated Background Blobs -->
     <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
     </div>
 
-    <!-- Navigation Bar -->
+    <!-- NAV -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">JE</a>
@@ -29,106 +41,256 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#education" class="nav-link">Education</a>
                 <a href="#achievements" class="nav-link">Achievements</a>
-                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#papers" class="nav-link">Paper & Research</a>
+                <a href="pages/blog.html" class="nav-link">Blog/YT</a>
+                <a href="pages/resume.html" class="nav-link">Resume</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
-                <!-- UPDATED: View + Download Resume -->
-                <a href="Joseph_Ebinesar_Resume.pdf" target="_blank" rel="noopener" class="btn-resume">View Resume</a>
-                <a href="Joseph_Ebinesar_Resume.pdf" download class="btn-resume">Download</a>
-
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
+                <a href="pages/resume.html" class="btn-resume">View Resume</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
                 <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ==================== HERO ==================== -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">👋 Welcome to my portfolio</div>
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Available for AI/ML Roles
+                </div>
                 <h1 class="hero-title">
-                    <span class="gradient-text">JOSEPH EBINESAR</span>
+                    Hi, I'm <span class="gradient-text">Joseph Ebinesar</span> 👋
                 </h1>
-                <p class="hero-subtitle">Software Developer | Python | Web Development | MySQL</p>
+                <p class="hero-roles">
+                    <span class="role-tag">AI Engineer</span>
+                    <span class="role-sep">|</span>
+                    <span class="role-tag">Machine Learning Engineer</span>
+                    <span class="role-sep">|</span>
+                    <span class="role-tag">Software Developer</span>
+                </p>
+                <p class="hero-description">
+                    I build <span class="highlight-text">intelligent systems</span> that solve real-world problems using
+                    Artificial Intelligence, Machine Learning, and Python.
+                </p>
+                <p class="hero-project-note">
+                    🚀 Creator of <a href="https://feelup.vercel.app/login" target="_blank" rel="noopener" class="feelup-link">FeelUp</a> –
+                    an AI-powered mental health platform using transformer embeddings &amp; semantic peer matching.
+                </p>
                 <div class="hero-location">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Chennai, India
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Chennai, India &nbsp;·&nbsp; HITS – B.Tech CSE 2022–2026
                 </div>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="pages/resume.html" class="btn btn-secondary">View Resume</a>
+                    <a href="#contact" class="btn btn-ghost">Contact Me</a>
                 </div>
                 <div class="hero-links">
-                    <a href="mailto:josephebinesarofficial@gmail.com" class="hero-link" aria-label="Email">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
+                    <a href="mailto:josephebinesarofficial@gmail.com" class="hero-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         <span>Email</span>
                     </a>
-                    <a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener noreferrer" class="hero-link" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
+                    <a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener" class="hero-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener noreferrer" class="hero-link" aria-label="GitHub">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
+                    <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="hero-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                         <span>GitHub</span>
+                    </a>
+                    <a href="https://www.youtube.com/@TechWithEbi" target="_blank" rel="noopener" class="hero-link">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                        <span>YouTube</span>
                     </a>
                 </div>
             </div>
+            <div class="hero-image-side">
+                <div class="profile-photo-wrapper">
+                    <div class="profile-photo-ring"></div>
+                    <div class="profile-photo-container">
+                        <img src="images/profile/WhatsApp Image 2026-04-21 at 10.38.25 PM.jpeg"
+                             alt="Joseph Ebinesar – AI Engineer"
+                             class="profile-photo-img"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="profile-photo-placeholder" style="display:none">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </div>
+                    <div class="profile-float-badge badge-top"><span>🤖</span> AI Engineer</div>
+                    <div class="profile-float-badge badge-bottom"><span>🐍</span> Python Expert</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="section section-alt reveal-section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">
-                        Final-year Computer Science Engineering student and aspiring Software Developer with hands-on experience in Python, Web Development, and Database Management. Proven ability to build scalable applications through internships and academic projects. Seeking a challenging role to contribute technical skills to a fast-paced development team.
+            <p class="section-subtitle">My journey into Artificial Intelligence</p>
+            <div class="about-layout">
+                <div class="about-story">
+                    <p class="about-para">
+                        I'm <strong>Joseph Ebinesar</strong>, a final-year Computer Science Engineering student at
+                        <strong>Hindustan Institute of Technology and Science</strong>, Chennai. My journey into
+                        AI began with a simple question: <em>"Can machines truly understand humans?"</em>
                     </p>
+                    <p class="about-para">
+                        That curiosity transformed into a passion. I built <strong>FeelUp</strong>, an AI-powered mental health platform
+                        using transformer embeddings, semantic peer matching, and privacy-first architecture.
+                        My research on FeelUp achieved <strong>Precision@5: 0.867</strong> and sub-second response times.
+                    </p>
+                    <p class="about-para">
+                        I've competed in hackathons like <strong>Infosys Hackathon</strong>, <strong>Google Thinkathon</strong>,
+                        <strong>SRM Hackathon</strong>, and <strong>Saveetha Innovation Challenge</strong>, and presented
+                        research at academic conferences. I also run <strong>Tech With Ebi</strong> on YouTube — simplifying AI for everyone.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-card"><span class="stat-number">5+</span><span class="stat-label">AI Projects</span></div>
+                        <div class="stat-card"><span class="stat-number">6+</span><span class="stat-label">Hackathons</span></div>
+                        <div class="stat-card"><span class="stat-number">8.23</span><span class="stat-label">CGPA</span></div>
+                        <div class="stat-card"><span class="stat-number">2</span><span class="stat-label">Internships</span></div>
+                    </div>
                     <div class="about-highlight">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                         <div>
-                            <strong>What I'm looking for:</strong>
-                            <p>Open to Software Developer roles (Intern/FTE) — Chennai or Remote.</p>
+                            <strong>Open to AI/ML Engineering roles</strong>
+                            <p>Seeking AI Engineer, ML Engineer, or Software Developer positions — Chennai or Remote.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-photos">
+                    <div class="about-photo-card reveal-card">
+                        <img src="images/paper presentation/presenting image 1.jpeg" alt="Paper Presentation" class="about-photo-img" onerror="this.parentElement.classList.add('img-error')">
+                        <div class="about-photo-label">📄 Research Paper Presentation</div>
+                    </div>
+                    <div class="about-photo-card reveal-card">
+                        <img src="images/infosys hackaton/team photo.jpeg" alt="Infosys Hackathon" class="about-photo-img" onerror="this.parentElement.classList.add('img-error')">
+                        <div class="about-photo-label">💻 Infosys Hackathon</div>
+                    </div>
+                    <div class="about-photo-card reveal-card">
+                        <img src="images/2 year ghyan disha/Gyan Disha with friends.JPG.jpeg" alt="Gyan Disha" class="about-photo-img" onerror="this.parentElement.classList.add('img-error')">
+                        <div class="about-photo-label">🏆 Gyan Disha 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="section reveal-section">
+        <div class="container">
+            <h2 class="section-title">Skills &amp; Technologies</h2>
+            <p class="section-subtitle">Hover or tap each skill orb to explore — powered by ✨ curiosity</p>
+
+            <!-- Orbital skill rings -->
+            <div class="skills-universe">
+                <!-- Center Core -->
+                <div class="skill-core">
+                    <div class="skill-core-inner">
+                        <span class="skill-core-icon">🤖</span>
+                        <span class="skill-core-label">AI Stack</span>
+                    </div>
+                    <div class="skill-core-ring ring-1"></div>
+                    <div class="skill-core-ring ring-2"></div>
+                    <div class="skill-core-ring ring-3"></div>
+                </div>
+
+                <!-- Skill Orbs Grid -->
+                <div class="skill-orbs-grid">
+                    <div class="skill-orb" data-level="95" tabindex="0" style="--orb-color:#00f5d4;--orb-delay:0s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">🐍</span><span class="orb-name">Python</span><div class="orb-bar"><div class="orb-bar-fill" style="width:95%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Python</div>
+                            <div class="orb-back-level">Expert · 95%</div>
+                            <div class="orb-back-tools">NumPy · Pandas · Matplotlib · Flask · scripting</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="88" tabindex="0" style="--orb-color:#f72585;--orb-delay:0.1s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">🧠</span><span class="orb-name">Machine Learning</span><div class="orb-bar"><div class="orb-bar-fill" style="width:88%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">ML Engineering</div>
+                            <div class="orb-back-level">Advanced · 88%</div>
+                            <div class="orb-back-tools">scikit-learn · XGBoost · Random Forest · SVM</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="82" tabindex="0" style="--orb-color:#4361ee;--orb-delay:0.2s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">⚡</span><span class="orb-name">TensorFlow</span><div class="orb-bar"><div class="orb-bar-fill" style="width:82%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Deep Learning</div>
+                            <div class="orb-back-level">Advanced · 82%</div>
+                            <div class="orb-back-tools">Keras · Transformers · Sentence-BERT · CNNs</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="85" tabindex="0" style="--orb-color:#7209b7;--orb-delay:0.3s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">💬</span><span class="orb-name">NLP</span><div class="orb-bar"><div class="orb-bar-fill" style="width:85%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Natural Language Processing</div>
+                            <div class="orb-back-level">Advanced · 85%</div>
+                            <div class="orb-back-tools">NLTK · spaCy · pgvector · HNSW · Embeddings</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="78" tabindex="0" style="--orb-color:#06d6a0;--orb-delay:0.4s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">👁️</span><span class="orb-name">Computer Vision</span><div class="orb-bar"><div class="orb-bar-fill" style="width:78%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Computer Vision</div>
+                            <div class="orb-back-level">Intermediate · 78%</div>
+                            <div class="orb-back-tools">OpenCV · PIL · MediaPipe · Object Detection</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="80" tabindex="0" style="--orb-color:#ffd60a;--orb-delay:0.5s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">🔥</span><span class="orb-name">Flask / API</span><div class="orb-bar"><div class="orb-bar-fill" style="width:80%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Flask &amp; FastAPI</div>
+                            <div class="orb-back-level">Advanced · 80%</div>
+                            <div class="orb-back-tools">REST API · Jinja2 · SQLAlchemy · Endpoints</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="75" tabindex="0" style="--orb-color:#f77f00;--orb-delay:0.6s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">⚙️</span><span class="orb-name">JavaScript</span><div class="orb-bar"><div class="orb-bar-fill" style="width:75%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">JavaScript / TS</div>
+                            <div class="orb-back-level">Intermediate · 75%</div>
+                            <div class="orb-back-tools">ES6+ · Next.js · React · DOM · Async</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="83" tabindex="0" style="--orb-color:#e63946;--orb-delay:0.7s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">🗄️</span><span class="orb-name">SQL / pgvector</span><div class="orb-bar"><div class="orb-bar-fill" style="width:83%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">Databases &amp; Vectors</div>
+                            <div class="orb-back-level">Advanced · 83%</div>
+                            <div class="orb-back-tools">PostgreSQL · pgvector · Supabase · RLS · HNSW</div>
+                        </div>
+                    </div>
+                    <div class="skill-orb" data-level="72" tabindex="0" style="--orb-color:#06b6d4;--orb-delay:0.8s">
+                        <div class="orb-glow"></div>
+                        <div class="orb-face orb-front"><span class="orb-emoji">🌐</span><span class="orb-name">HTML / CSS</span><div class="orb-bar"><div class="orb-bar-fill" style="width:72%"></div></div></div>
+                        <div class="orb-face orb-back">
+                            <div class="orb-back-title">HTML5 &amp; CSS3</div>
+                            <div class="orb-back-level">Intermediate · 72%</div>
+                            <div class="orb-back-tools">Flexbox · Grid · Animations · Glassmorphism</div>
                         </div>
                     </div>
                 </div>
@@ -136,444 +298,510 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                        <h3>Languages</h3>
-                    </div>
-                    <div class="skill-chips">
-                        <span class="skill-chip skill-advanced">Python <span class="skill-level">Advanced</span></span>
-                        <span class="skill-chip skill-basic">JavaScript <span class="skill-level">Basic</span></span>
-                        <span class="skill-chip">HTML5</span>
-                        <span class="skill-chip">CSS3</span>
-                        <span class="skill-chip">SQL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                        </svg>
-                        <h3>Python Libraries</h3>
-                    </div>
-                    <div class="skill-chips">
-                        <span class="skill-chip">NumPy</span>
-                        <span class="skill-chip">Pandas</span>
-                        <span class="skill-chip">Matplotlib</span>
-                        <span class="skill-chip">Seaborn</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                        </svg>
-                        <h3>Databases</h3>
-                    </div>
-                    <div class="skill-chips">
-                        <span class="skill-chip">MySQL</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                        </svg>
-                        <h3>Tools & Platforms</h3>
-                    </div>
-                    <div class="skill-chips">
-                        <span class="skill-chip">Git</span>
-                        <span class="skill-chip">GitHub</span>
-                        <span class="skill-chip">VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="section section-alt reveal-section">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Building solutions that matter — from AI platforms to smart systems</p>
+
+            <!-- FeelUp Featured -->
+            <div class="featured-project reveal-card">
+                <div class="featured-project-badge">⭐ Featured Project</div>
+                <div class="featured-project-inner">
+                    <div class="featured-project-content">
+                        <div class="featured-project-tags">
+                            <span class="tech-badge">Python</span><span class="tech-badge">NLP</span>
+                            <span class="tech-badge">Next.js</span><span class="tech-badge">Supabase</span>
+                            <span class="tech-badge">pgvector</span><span class="tech-badge">Transformers</span>
+                        </div>
+                        <h3 class="featured-project-title">FeelUp – AI Mental Health Platform</h3>
+                        <p class="featured-project-desc">
+                            An end-to-end AI-powered platform using transformer embeddings for emotion understanding,
+                            semantic peer-matching via vector similarity, and a privacy-first architecture with Row-Level Security.
+                            Achieves Precision@5: 0.867 and sub-second end-to-end latency.
+                        </p>
+                        <ul class="featured-features">
+                            <li>🧠 Transformer embeddings for semantic emotion understanding</li>
+                            <li>🤝 AI peer matching via ANN + HNSW vector search</li>
+                            <li>🔒 Privacy-first: PostgreSQL Row-Level Security</li>
+                            <li>📊 Behavioral analytics — mood trends &amp; streaks</li>
+                        </ul>
+                        <div class="featured-project-links">
+                            <a href="https://feelup.vercel.app/login" target="_blank" rel="noopener" class="btn btn-primary">🌐 Live Demo</a>
+                            <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="btn btn-secondary">💻 GitHub</a>
+                            <a href="#feelup-research" class="btn btn-outline-glow">📄 Research</a>
+                        </div>
+                    </div>
+                    <div class="featured-project-visual">
+                        <div class="project-visual-mockup">
+                            <div class="mockup-bar"><span></span><span></span><span></span></div>
+                            <div class="mockup-content">
+                                <div class="mockup-line mockup-line-wide"></div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-chart">
+                                    <div class="chart-bar" style="height:60%"></div>
+                                    <div class="chart-bar" style="height:80%"></div>
+                                    <div class="chart-bar" style="height:45%"></div>
+                                    <div class="chart-bar" style="height:90%"></div>
+                                    <div class="chart-bar" style="height:70%"></div>
+                                    <div class="chart-bar" style="height:55%"></div>
+                                </div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line mockup-line-short"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects -->
             <div class="projects-grid">
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Virtual Clothing System</h3>
-                        <div class="project-tech-badges">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Image Processing</span>
-                            <span class="tech-badge">Database</span>
-                        </div>
+                <div class="project-card reveal-card">
+                    <div class="project-card-top"><div class="project-icon">🔍</div>
+                        <div class="project-tech-badges"><span class="tech-badge">Python</span><span class="tech-badge">NLP</span><span class="tech-badge">ML</span></div>
                     </div>
-                    <p class="project-description">
-                        <strong>Problem:</strong> Traditional clothing shopping lacks virtual try-on capabilities.<br>
-                        <strong>Solution:</strong> Digital interface for virtual clothing try-ons using image processing; stores user preferences in a local DB.
-                    </p>
-                    <ul class="project-features">
-                        <li>Real-time virtual try-on using image processing algorithms</li>
-                        <li>User preference storage and retrieval system</li>
-                        <li>Intuitive interface for seamless clothing selection</li>
-                    </ul>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephebinesar/virtual-clothing-system" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                            GitHub
-                        </a>
-                        <a href="#" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Live Demo
-                        </a>
+                    <h3 class="project-title">AI Career Struggle Analyzer</h3>
+                    <p class="project-description">NLP-powered tool that analyzes career concerns, classifies struggle types, and generates personalized recommendations using ML models.</p>
+                    <div class="project-links" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                        <a href="https://carrer-guidence-3f5n.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.78rem;padding:0.45rem 0.9rem;">🌐 Live Demo</a>
+                        <a href="https://github.com/Josephebinesar" target="_blank" class="btn btn-outline">GitHub →</a>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Hospital Management System</h3>
-                        <div class="project-tech-badges">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">Database Design</span>
-                        </div>
+                <div class="project-card reveal-card">
+                    <div class="project-card-top"><div class="project-icon">👗</div>
+                        <div class="project-tech-badges"><span class="tech-badge">Python</span><span class="tech-badge">OpenCV</span><span class="tech-badge">CV</span></div>
                     </div>
-                    <p class="project-description">
-                        <strong>Problem:</strong> Manual hospital record management is inefficient and error-prone.<br>
-                        <strong>Solution:</strong> Automates patient registration, billing, and record keeping with secure structured storage.
-                    </p>
-                    <ul class="project-features">
-                        <li>Automated patient registration and appointment scheduling</li>
-                        <li>Integrated billing system with invoice generation</li>
-                        <li>Secure MySQL database for medical records management</li>
-                    </ul>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephebinesar/hospital-management-system" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                            GitHub
-                        </a>
-                        <a href="#" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Live Demo
-                        </a>
-                    </div>
+                    <h3 class="project-title">Smart Mirror – Virtual Try-On</h3>
+                    <p class="project-description">Real-time virtual clothing try-on using computer vision and image processing. Overlays garments on user silhouettes with local DB preference storage.</p>
+                    <div class="project-links"><a href="https://github.com/Josephebinesar/virtual-clothing-system" target="_blank" class="btn btn-outline">GitHub →</a></div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Crop Management System</h3>
-                        <div class="project-tech-badges">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Data Analysis</span>
-                            <span class="tech-badge">Visualization</span>
-                        </div>
+                <div class="project-card reveal-card">
+                    <div class="project-card-top"><div class="project-icon">🌾</div>
+                        <div class="project-tech-badges"><span class="tech-badge">Python</span><span class="tech-badge">ML</span><span class="tech-badge">Flask</span></div>
                     </div>
-                    <p class="project-description">
-                        <strong>Problem:</strong> Farmers lack data-driven insights for crop management.<br>
-                        <strong>Solution:</strong> Tracks crop cycles and soil health using visual analytics; generates growth reports and predictions.
-                    </p>
-                    <ul class="project-features">
-                        <li>Crop cycle tracking with timeline visualization</li>
-                        <li>Soil health monitoring and analysis dashboard</li>
-                        <li>Predictive analytics for yield estimation</li>
-                    </ul>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephebinesar/crop-management-system" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                            GitHub
-                        </a>
-                        <a href="#" class="btn btn-outline">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                            Live Demo
-                        </a>
-                    </div>
+                    <h3 class="project-title">Agriculture AI Advisory System</h3>
+                    <p class="project-description">AI agricultural advisor analyzing soil conditions, weather, and crop data to deliver actionable recommendations and yield predictions.</p>
+                    <div class="project-links"><a href="https://github.com/Josephebinesar" target="_blank" class="btn btn-outline">GitHub →</a></div>
                 </div>
-
+                <div class="project-card reveal-card">
+                    <div class="project-card-top"><div class="project-icon">📈</div>
+                        <div class="project-tech-badges"><span class="tech-badge">Python</span><span class="tech-badge">XGBoost</span><span class="tech-badge">Pandas</span></div>
+                    </div>
+                    <h3 class="project-title">Crop Price Prediction System</h3>
+                    <p class="project-description">ML model trained on historical datasets using time-series analysis &amp; feature engineering to forecast market prices with high accuracy.</p>
+                    <div class="project-links"><a href="https://github.com/Josephebinesar/crop-management-system" target="_blank" class="btn btn-outline">GitHub →</a></div>
+                </div>
+                <div class="project-card reveal-card">
+                    <div class="project-card-top"><div class="project-icon">🤖</div>
+                        <div class="project-tech-badges"><span class="tech-badge">Python</span><span class="tech-badge">AI Agent</span><span class="tech-badge">LLM</span></div>
+                    </div>
+                    <h3 class="project-title">Digital Catalog AI Agent</h3>
+                    <p class="project-description">Intelligent agent auto-categorizing digital products, answering queries, and giving recommendations using LLM reasoning.</p>
+                    <div class="project-links"><a href="https://github.com/Josephebinesar" target="_blank" class="btn btn-outline">GitHub →</a></div>
+                </div>
             </div>
             <div class="projects-footer">
-                <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener noreferrer" class="link-arrow">
-                    More projects on GitHub
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
+                <a href="https://github.com/Josephebinesar" target="_blank" class="link-arrow">More on GitHub →</a>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Machine Learning Intern</h3>
-                            <span class="timeline-date">Dec 2025 – Feb 2026</span>
-                        </div>
-                        <p class="timeline-company">VCodes</p>
-                        <ul class="timeline-details">
-                            <li>Developed predictive models using Python with focus on preprocessing and feature engineering</li>
-                            <li>Performed NumPy/Pandas analysis on large datasets to improve model accuracy by 15%</li>
-                            <li>Documented workflows and deployment strategies for production-ready ML pipelines</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Full Stack Development Intern</h3>
-                            <span class="timeline-date">June 2024</span>
-                        </div>
-                        <p class="timeline-company">CodSoft</p>
-                        <ul class="timeline-details">
-                            <li>Built responsive UI components using HTML/CSS/JavaScript with mobile-first approach</li>
-                            <li>Assisted in backend logic development and MySQL database connectivity</li>
-                            <li>Improved code maintainability and cross-browser compatibility through best practices</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <div class="education-content">
-                        <h3>Bachelor of Technology in Computer Science Engineering</h3>
-                        <p class="education-institution">Hindustan Institute of Technology and Science</p>
-                        <div class="education-meta">
-                            <span class="education-year">2022 – 2026 (Expected)</span>
-                            <span class="education-grade">CGPA: 8.23/10</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="education-content">
-                        <h3>Higher Secondary (ISC)</h3>
-                        <p class="education-institution">Secondary Education</p>
-                        <div class="education-meta">
-                            <span class="education-year">2022</span>
-                            <span class="education-grade">78.2%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                    </div>
-                    <div class="education-content">
-                        <h3>SSLC (ICSE)</h3>
-                        <p class="education-institution">Secondary School</p>
-                        <div class="education-meta">
-                            <span class="education-year">2020</span>
-                            <span class="education-grade">72.5%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="section section-alt">
+    <!-- ==================== ACHIEVEMENTS ==================== -->
+    <section id="achievements" class="section section-alt reveal-section">
         <div class="container">
             <h2 class="section-title">Achievements</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">🏆</div>
-                    <h3>1st Prize - Gyan Disha 2025</h3>
-                    <!-- UPDATED -->
-                    <p>University-level Technical Event</p>
+            <p class="section-subtitle">Click any card to see all photos from that event</p>
+
+            <!-- Achievement Gallery Cards -->
+            <div class="achieve-gallery-grid">
+
+                <!-- Gyan Disha 2025 -->
+                <div class="achieve-gallery-card" data-event="gyan2025" onclick="openAchieveModal('gyan2025')">
+                    <div class="agc-thumb">
+                        <img src="images/2 year ghyan disha/certificate.jpeg" alt="Gyan Disha 2025" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">4 photos</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">🏆</div>
+                        <h3 class="agc-title">1st Prize – Gyan Disha 2025</h3>
+                        <span class="agc-year">2025 · University Level</span>
+                        <p class="agc-desc">Won 1st place showcasing AI innovation at the university-level technical event.</p>
+                    </div>
                 </div>
 
-                <div class="achievement-card">
-                    <div class="achievement-icon">💻</div>
-                    <h3>Infosys Hackathon</h3>
-                    <p>Participant</p>
+                <!-- Infosys Hackathon -->
+                <div class="achieve-gallery-card" data-event="infosys" onclick="openAchieveModal('infosys')">
+                    <div class="agc-thumb">
+                        <img src="images/infosys hackaton/team photo.jpeg" alt="Infosys Hackathon" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">2 photos</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">💻</div>
+                        <h3 class="agc-title">Infosys Hackathon</h3>
+                        <span class="agc-year">2024 · Infosys</span>
+                        <p class="agc-desc">Built enterprise AI solutions in a 24-hour competitive sprint with a stellar team.</p>
+                    </div>
                 </div>
 
-                <div class="achievement-card">
-                    <div class="achievement-icon">🚀</div>
-                    <h3>Saveetha College Innovation Challenge</h3>
-                    <p>Hackathon Participant</p>
+                <!-- Google Thinkathon -->
+                <div class="achieve-gallery-card" data-event="google" onclick="openAchieveModal('google')">
+                    <div class="agc-thumb">
+                        <img src="images/google thinkathon/Thinkathon.jpg.jpeg" alt="Google Thinkathon" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">1 photo</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">🔵</div>
+                        <h3 class="agc-title">Google Thinkathon</h3>
+                        <span class="agc-year">2024 · Google</span>
+                        <p class="agc-desc">Innovative tech solutions under guidance of Google mentors and industry experts.</p>
+                    </div>
                 </div>
 
-                <div class="achievement-card">
-                    <div class="achievement-icon">⚡</div>
-                    <h3>Hindustan Innothon</h3>
-                    <p>Hackathon Participant</p>
+                <!-- Saveetha Hackathon -->
+                <div class="achieve-gallery-card" data-event="saveetha" onclick="openAchieveModal('saveetha')">
+                    <div class="agc-thumb">
+                        <img src="images/saveetha hackathon/team photo.jpeg" alt="Saveetha Hackathon" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">2 photos</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">🚀</div>
+                        <h3 class="agc-title">Saveetha Innovation Challenge</h3>
+                        <span class="agc-year">2024 · Saveetha College</span>
+                        <p class="agc-desc">Presented an AI-driven solution for healthcare accessibility and digital wellness.</p>
+                    </div>
                 </div>
+
+                <!-- SRM Hackathon -->
+                <div class="achieve-gallery-card" data-event="srm" onclick="openAchieveModal('srm')">
+                    <div class="agc-thumb">
+                        <img src="images/srm hackathon/certificate.jpeg" alt="SRM Hackathon" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">1 photo</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">⚡</div>
+                        <h3 class="agc-title">SRM Hackathon</h3>
+                        <span class="agc-year">2023 · SRM Institute</span>
+                        <p class="agc-desc">Built innovative software solutions in a time-limited competitive sprint at SRM.</p>
+                    </div>
+                </div>
+
+                <!-- Thinkathon 3rd Year -->
+                <div class="achieve-gallery-card" data-event="think3" onclick="openAchieveModal('think3')">
+                    <div class="agc-thumb">
+                        <img src="images/thinkathon 3rd year/WhatsApp Image 2026-04-21 at 10.38.26 PM.jpeg" alt="Thinkathon 3rd Year" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">2 photos</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">🧩</div>
+                        <h3 class="agc-title">Thinkathon – 3rd Year</h3>
+                        <span class="agc-year">2025 · HITS</span>
+                        <p class="agc-desc">Third year competing with evolved AI projects and deeper technical expertise.</p>
+                    </div>
+                </div>
+
+                <!-- Gyan Disha 1st Year -->
+                <div class="achieve-gallery-card" data-event="gyan1" onclick="openAchieveModal('gyan1')">
+                    <div class="agc-thumb">
+                        <img src="images/gyan disha 1st year/with friends with hod.jpeg" alt="Gyan Disha 1st Year" class="agc-img">
+                        <div class="agc-overlay"><span class="agc-view-btn">📸 View All Photos</span></div>
+                        <div class="agc-count">2 photos</div>
+                    </div>
+                    <div class="agc-body">
+                        <div class="agc-trophy">🌟</div>
+                        <h3 class="agc-title">Gyan Disha – 1st Year</h3>
+                        <span class="agc-year">2023 · HITS</span>
+                        <p class="agc-desc">The beginning of my journey — first competitive event with the HOD and core team.</p>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- TEAM THANKS SECTION -->
+            <div class="team-thanks-section reveal-card">
+                <div class="team-thanks-header">
+                    <span class="team-thanks-heart">💙</span>
+                    <h3 class="team-thanks-title">Thank You, My Team!</h3>
+                    <p class="team-thanks-sub">I participated in every hackathon, competition, and research journey alongside these incredible people</p>
+                </div>
+
+                <!-- Row: 3 equal person cards -->
+                <div class="team-thanks-cards">
+                    <!-- Joseph (Me) -->
+                    <div class="team-card">
+                        <div class="team-card-photo-ring">
+                            <img src="images/profile/WhatsApp Image 2026-04-21 at 10.38.25 PM.jpeg" alt="Joseph Ebinesar" class="team-card-photo" style="object-position:center 20%" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍💻</div>'">
+                        </div>
+                        <h4 class="team-card-name">Joseph Ebinesar</h4>
+                        <p class="team-card-role">AI Engineer · Me 🙋</p>
+                        <p class="team-card-thanks">"Every challenge we faced together shaped who I am today. So proud of what we built as a team!"</p>
+                    </div>
+
+                    <!-- Manya -->
+                    <div class="team-card">
+                        <div class="team-card-photo-ring">
+                            <img src="images/manya.jpeg" alt="Manya N" class="team-card-photo" style="object-position:center 15%" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👩‍💻</div>'">
+                        </div>
+                        <h4 class="team-card-name">Manya N</h4>
+                        <p class="team-card-role">Co-Author · Research Partner · Hackathon Partner</p>
+                        <p class="team-card-thanks">"Manya's brilliance in research and unstoppable energy in every hackathon made us an unbeatable team. Thank you! 🙏"</p>
+                    </div>
+
+                    <!-- Siva Shankar -->
+                    <div class="team-card">
+                        <div class="team-card-photo-ring">
+                            <img src="images/sivashankar.jpeg" alt="Siva Shankar" class="team-card-photo" style="object-position:center 15%" onerror="this.parentElement.innerHTML='<div class=team-photo-placeholder>👨‍💻</div>'">
+                        </div>
+                        <h4 class="team-card-name">Siva Shankar</h4>
+                        <p class="team-card-role">Hackathon Partner · Developer</p>
+                        <p class="team-card-thanks">"Siva's energy and creativity powered us through every hackathon. A true friend! 🚀"</p>
+                    </div>
+                </div>
+
+                <!-- Full-width: Saveetha team group photo -->
+                <div class="team-group-photo-wrap reveal-card">
+                    <div class="team-group-img-frame">
+                        <img src="images/saveetha hackathon/team photo.jpeg"
+                             alt="Joseph, Manya and Siva Shankar at Saveetha Innovation Challenge 2024"
+                             class="team-group-photo"
+                             style="object-position:center 25%; transform:scale(1.35); transform-origin:center 25%;"
+                             onerror="this.parentElement.parentElement.style.display='none'">
+                    </div>
+                    <div class="team-group-caption">
+                        <span class="team-group-event">📸 Saveetha Innovation Challenge 2024</span>
+                        <p class="team-group-quote">"Every hackathon, every late night, every line of code — it was all possible because of Manya and Siva. You're not just teammates, you're the reason every achievement feels meaningful. Thank you from the bottom of my heart! 🏆✨"</p>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="section">
+    <!-- Achievement Modal -->
+    <div class="achieve-modal" id="achieveModal" onclick="if(event.target===this)closeAchieveModal()">
+        <div class="achieve-modal-inner">
+            <button class="achieve-modal-close" onclick="closeAchieveModal()">✕</button>
+            <h3 class="achieve-modal-title" id="achieveModalTitle"></h3>
+            <p class="achieve-modal-desc" id="achieveModalDesc"></p>
+            <div class="achieve-modal-photos" id="achieveModalPhotos"></div>
+        </div>
+    </div>
+
+    <!-- ==================== PAPER & RESEARCH ==================== -->
+    <section id="papers" class="section reveal-section">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-card">
-                    <div class="certification-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+            <h2 class="section-title">Paper &amp; Research</h2>
+            <p class="section-subtitle">Academic paper, AI architecture, and research results — all in one place</p>
+
+            <!-- Presentation Photo + Basic Info -->
+            <div class="paper-main-card reveal-card">
+                <div class="paper-photos-strip">
+                    <img src="images/paper presentation/presenting image 1.jpeg" alt="Presenting the paper" class="paper-strip-img" onerror="this.style.display='none'">
+                    <div class="paper-strip-overlay">
+                        <span class="conf-badge" style="font-size:1rem;padding:0.5rem 1.25rem;">📍 Academic Conference 2025</span>
+                        <span class="conf-date" style="font-size:0.9rem;">🗓️ 2025 · HITS, Chennai</span>
                     </div>
-                    <h3>Data Analysis & Python Developer</h3>
-                    <p class="certification-issuer">MyCaptain</p>
+                </div>
+                <div class="paper-main-body">
+                    <div class="paper-badge">Research Paper</div>
+                    <h3 class="paper-main-title">FeelUp: AI Powered Emotion Sharing and Support Platform</h3>
+                    <div class="paper-authors-row">
+                        <span>Authors:</span>
+                        <span class="paper-author-tag">Manya N</span>
+                        <span class="paper-author-tag active">V A Joseph Ebinesar</span>
+                        <span class="paper-author-tag">Vasantharaj K</span>
+                    </div>
+                    <p class="paper-abstract">
+                        An AI-powered emotional support platform using transformer-based sentence embeddings for semantic
+                        understanding of user emotions, ANN peer matching via pgvector, and a privacy-first architecture
+                        using PostgreSQL Row-Level Security. Achieves Precision@5 of 0.867 with sub-second latency.
+                    </p>
+                    <div class="paper-tags-row">
+                        <span class="pub-area-tag">AI</span>
+                        <span class="pub-area-tag">NLP</span>
+                        <span class="pub-area-tag">Transformers</span>
+                        <span class="pub-area-tag">Mental Health Tech</span>
+                        <span class="pub-area-tag">Semantic Search</span>
+                    </div>
+                    <!-- Expand button -->
+                    <button class="research-expand-btn" id="researchToggleBtn" onclick="toggleResearchDetails()">
+                        <span id="researchToggleText">📖 See Full Research Details</span>
+                        <svg id="researchToggleArrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="paper-main-links">
+                        <a href="https://feelup.vercel.app/login" target="_blank" rel="noopener" class="btn btn-primary">🌐 Live Demo</a>
+                        <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="btn btn-secondary">💻 GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expandable Research Details (hidden by default) -->
+            <div class="research-details-panel" id="researchDetailsPanel" style="display:none">
+
+                <!-- Impact Statement -->
+                <div class="impact-statement reveal-card" style="margin-top:0;">
+                    <div class="impact-quote">"</div>
+                    <p>FeelUp demonstrates how AI can create safe digital spaces for emotional expression by combining <strong>semantic analysis</strong>, <strong>privacy-focused infrastructure</strong>, and <strong>supportive peer matching</strong>.</p>
                 </div>
 
-                <div class="certification-card">
-                    <div class="certification-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                <!-- Architecture Diagram -->
+                <div class="architecture-section reveal-card">
+                    <h3 class="subsection-title">⚙️ System Architecture</h3>
+                    <div class="arch-diagram">
+                        <div class="arch-layer arch-frontend"><div class="arch-layer-icon">🖥️</div><div class="arch-layer-title">Frontend</div><div class="arch-layer-tech">Next.js · React · TailwindCSS</div></div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-layer arch-backend"><div class="arch-layer-icon">🔧</div><div class="arch-layer-title">Backend &amp; Database</div><div class="arch-layer-tech">Supabase · PostgreSQL · Row-Level Security</div></div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-layer arch-ai"><div class="arch-layer-icon">🧠</div><div class="arch-layer-title">AI Layer</div><div class="arch-layer-tech">Sentence Transformers · Emotion Embeddings</div></div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-layer arch-vector"><div class="arch-layer-icon">🔎</div><div class="arch-layer-title">Vector Retrieval Engine</div><div class="arch-layer-tech">pgvector · Cosine Similarity · ANN Search</div></div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-layer arch-matching"><div class="arch-layer-icon">🤝</div><div class="arch-layer-title">Peer Matching System</div><div class="arch-layer-tech">ANN + HNSW · Semantic Matching</div></div>
                     </div>
-                    <h3>AI & Full Stack Developer</h3>
-                    <p class="certification-issuer">MyCaptain</p>
                 </div>
 
-                <div class="certification-card">
-                    <div class="certification-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                <!-- Innovation Cards -->
+                <div class="innovations-grid reveal-card">
+                    <h3 class="subsection-title">💡 What Makes FeelUp Unique</h3>
+                    <div class="innovation-cards">
+                        <div class="innovation-card"><div class="inno-icon">🧠</div><h4>Semantic Emotion Understanding</h4><p>Transformer embeddings understand <em>meaning</em>, not just keywords.</p></div>
+                        <div class="innovation-card"><div class="inno-icon">🤝</div><h4>AI Peer Matching</h4><p>Connects users via vector similarity — semantically aligned, not random.</p></div>
+                        <div class="innovation-card"><div class="inno-icon">🔒</div><h4>Privacy-First Design</h4><p>Row-Level Security isolates each user's emotional data in PostgreSQL.</p></div>
+                        <div class="innovation-card"><div class="inno-icon">📊</div><h4>Behavioral Analytics</h4><p>Tracks mood trends, streaks, and emotional growth patterns over time.</p></div>
                     </div>
-                    <h3>C++ Certification</h3>
-                    <p class="certification-issuer">Bharathiar University (SUITS)</p>
                 </div>
+
+                <!-- Performance Metrics -->
+                <div class="performance-section reveal-card">
+                    <h3 class="subsection-title">📊 AI Performance Results</h3>
+                    <div class="perf-grid">
+                        <div class="perf-card perf-highlight"><div class="perf-metric">0.867</div><div class="perf-label">Precision@5</div><div class="perf-desc">Top-5 matching precision</div></div>
+                        <div class="perf-card"><div class="perf-metric">0.689</div><div class="perf-label">Avg Semantic Similarity</div><div class="perf-desc">Cosine similarity score</div></div>
+                        <div class="perf-card"><div class="perf-metric">~500ms</div><div class="perf-label">Embedding Generation</div><div class="perf-desc">Transformer inference time</div></div>
+                        <div class="perf-card"><div class="perf-metric">~300ms</div><div class="perf-label">Vector Search</div><div class="perf-desc">pgvector + HNSW retrieval</div></div>
+                        <div class="perf-card perf-highlight"><div class="perf-metric">&lt;1s</div><div class="perf-label">End-to-End Latency</div><div class="perf-desc">Full inference pipeline</div></div>
+                    </div>
+                    <p class="perf-note">Precision@5 of 0.867 means 86.7% of the top-5 peer matches were genuinely relevant — research-grade performance.</p>
+                </div>
+
+                <!-- Tech Categories -->
+                <div class="research-tech-grid reveal-card">
+                    <h3 class="subsection-title">🛠️ AI Technologies Used</h3>
+                    <div class="tech-categories">
+                        <div class="tech-cat-card"><div class="tech-cat-icon">🤖</div><h4>AI &amp; Machine Learning</h4><ul class="tech-list"><li>Transformer Sentence Embeddings</li><li>Semantic Similarity Matching</li><li>ANN (Approximate Nearest Neighbor)</li><li>Cosine Similarity Scoring</li><li>Emotion Detection &amp; Classification</li></ul></div>
+                        <div class="tech-cat-card"><div class="tech-cat-icon">🗄️</div><h4>Data Infrastructure</h4><ul class="tech-list"><li>PostgreSQL + pgvector</li><li>Row-Level Security (RLS)</li><li>Real-time data pipelines</li><li>HNSW indexing</li><li>Vector storage &amp; retrieval</li></ul></div>
+                        <div class="tech-cat-card"><div class="tech-cat-icon">🌐</div><h4>Web Stack</h4><ul class="tech-list"><li>Next.js + React</li><li>TailwindCSS</li><li>Supabase Auth &amp; Storage</li><li>Cloudflare Workers</li><li>Vercel Deployment</li></ul></div>
+                    </div>
+                </div>
+
+                <!-- Publication Info -->
+                <div class="publication-section reveal-card">
+                    <h3 class="subsection-title">📚 Research Publication</h3>
+                    <div class="publication-card">
+                        <div class="pub-title-row"><div class="pub-icon">📄</div><div><h4 class="pub-title">FeelUp: AI Powered Emotion Sharing and Support Platform</h4><div class="pub-institution">Hindustan Institute of Technology and Science</div></div></div>
+                        <div class="pub-authors"><span class="pub-authors-label">Authors:</span><span class="pub-author-chip">Manya N</span><span class="pub-author-chip highlight-author">V A Joseph Ebinesar</span><span class="pub-author-chip">Vasantharaj K</span></div>
+                        <div class="pub-areas"><span class="pub-area-tag">Artificial Intelligence</span><span class="pub-area-tag">Sentiment Analysis</span><span class="pub-area-tag">Digital Mental Health</span><span class="pub-area-tag">Semantic Retrieval</span><span class="pub-area-tag">NLP</span></div>
+                        <div class="pub-links">
+                            <a href="https://feelup.vercel.app/login" target="_blank" rel="noopener" class="btn btn-primary">🌐 Live Demo</a>
+                            <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="btn btn-secondary">💻 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end research-details-panel -->
+        </div>
+    </section>
+
+    <!-- ==================== GITHUB STATS ==================== -->
+    <section id="github-stats" class="section section-alt reveal-section">
+        <div class="container">
+            <h2 class="section-title">GitHub Activity</h2>
+            <p class="section-subtitle">Contributions, repositories, and top languages</p>
+            <div class="github-stats-grid">
+                <div class="github-stat-card">
+                    <img src="https://github-readme-stats.vercel.app/api?username=Josephebinesar&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=00f5d4&text_color=a8a8b8&icon_color=f72585"
+                         alt="GitHub Stats" class="github-stat-img"
+                         onerror="this.parentElement.querySelector('.github-fallback').style.display='flex';this.style.display='none'">
+                    <div class="github-fallback" style="display:none">
+                        <p>GitHub Stats</p><span>Connect to internet to view</span>
+                    </div>
+                </div>
+                <div class="github-stat-card">
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Josephebinesar&layout=compact&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=00f5d4&text_color=a8a8b8"
+                         alt="Top Languages" class="github-stat-img"
+                         onerror="this.parentElement.querySelector('.github-fallback').style.display='flex';this.style.display='none'">
+                    <div class="github-fallback" style="display:none">
+                        <p>Top Languages</p><span>Python · JavaScript · HTML</span>
+                    </div>
+                </div>
+                <div class="github-stat-card github-streak-card">
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Josephebinesar&theme=tokyonight&hide_border=true&background=0a0a0f&stroke=00f5d4&ring=f72585&fire=f72585&currStreakLabel=a8a8b8"
+                         alt="Streak Stats" class="github-stat-img"
+                         onerror="this.parentElement.querySelector('.github-fallback').style.display='flex';this.style.display='none'">
+                    <div class="github-fallback" style="display:none">
+                        <p>Contribution Streak</p><span>Connect to internet to view</span>
+                    </div>
+                </div>
+            </div>
+            <div class="github-cta">
+                <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="btn btn-primary">View GitHub Profile →</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section reveal-section">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Looking for an AI Engineer or ML Developer? Let's connect and build impactful technology together.</p>
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3>Let's Connect</h3>
-                    <p>I'm currently looking for Software Developer opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <p class="contact-intro">I'm actively seeking AI Engineer, Machine Learning Engineer, and Software Developer opportunities. Reach out!</p>
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                            <div>
-                                <strong>Phone</strong>
-                                <p>+91 7708976094</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            <div>
-                                <strong>Email</strong>
-                                <p><a href="mailto:josephebinesarofficial@gmail.com">josephebinesarofficial@gmail.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                            <div>
-                                <strong>LinkedIn</strong>
-                                <p><a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener noreferrer">linkedin.com/in/josephebinesar</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                            <div>
-                                <strong>GitHub</strong>
-                                <p><a href="https://github.com/Josephebinesar" target="_blank" rel="noopener noreferrer">github.com/Josephebinesar</a></p>
-                            </div>
-                        </div>
+                        <a href="mailto:josephebinesarofficial@gmail.com" class="contact-item">
+                            <div class="contact-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                            <div><strong>Email</strong><p>josephebinesarofficial@gmail.com</p></div>
+                        </a>
+                        <a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener" class="contact-item">
+                            <div class="contact-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+                            <div><strong>LinkedIn</strong><p>linkedin.com/in/josephebinesar</p></div>
+                        </a>
+                        <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" class="contact-item">
+                            <div class="contact-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+                            <div><strong>GitHub</strong><p>github.com/Josephebinesar</p></div>
+                        </a>
+                        <a href="https://www.youtube.com/@TechWithEbi" target="_blank" rel="noopener" class="contact-item">
+                            <div class="contact-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div>
+                            <div><strong>YouTube</strong><p>Tech With Ebi</p></div>
+                        </a>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Hi Joseph, I'd like to discuss an AI role..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Send Message 🚀</button>
                 </form>
             </div>
             <div class="form-success" id="formSuccess">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                <h3>Message Sent Successfully!</h3>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <h3>Message Sent! ✅</h3>
                 <p>Thank you for reaching out. I'll get back to you soon.</p>
             </div>
         </div>
@@ -583,37 +811,29 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <p class="footer-name">Joseph Ebinesar</p>
+                <p class="footer-tagline">AI Engineer · ML Engineer · Software Developer · Creator of FeelUp</p>
                 <div class="footer-social">
                     <a href="mailto:josephebinesarofficial@gmail.com" aria-label="Email">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </a>
-                    <a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
+                    <a href="https://linkedin.com/in/josephebinesar" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
-                    <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
+                    <a href="https://github.com/Josephebinesar" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@TechWithEbi" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
                     </a>
                 </div>
-                <p class="footer-copyright">© 2026 Joseph Ebinesar. All rights reserved.</p>
+                <p class="footer-copyright">© 2026 Joseph Ebinesar. Built with ❤️, Python, and AI.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
     </button>
 
     <script src="script.js"></script>
