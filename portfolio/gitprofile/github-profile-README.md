@@ -212,7 +212,7 @@ const expertise = {
 
 **B.Tech in Computer Science Engineering**  
 Hindustan Institute of Technology and Science | 2022 – 2026 (Expected)  
-CGPA: 8.23/10
+CGPA: 8.15/10
 
 ---
 

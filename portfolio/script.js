@@ -1,63 +1,10 @@
-﻿// ========================================
-// JOSEPH EBINESAR â€“ PORTFOLIO JAVASCRIPT v2
-// AI Engineer Â· ML Developer Â· Creator of FeelUp
+// ========================================
+// JOSEPH EBINESAR – PORTFOLIO JAVASCRIPT v2
+// AI Engineer · ML Developer · Creator of FeelUp
 // ========================================
 
 // ========================================
-// VISITOR COUNTER
-// ========================================
-(function initVisitorCounter() {
-  const countEl = document.getElementById('visitorCount');
-  if (!countEl) return;
-
-  // Get current count from localStorage (simulates a real counter for local use)
-  let count = parseInt(localStorage.getItem('portfolio_visitor_count') || '0', 10);
-
-  // Increment once per session
-  const sessionKey = 'portfolio_session_counted';
-  if (!sessionStorage.getItem(sessionKey)) {
-    count += 1;
-    localStorage.setItem('portfolio_visitor_count', count.toString());
-    sessionStorage.setItem(sessionKey, '1');
-  }
-
-  // Animate the count up
-  const target = count;
-  let current = Math.max(0, target - 30);
-  countEl.textContent = current;
-
-  const animInterval = setInterval(() => {
-    if (current >= target) {
-      clearInterval(animInterval);
-      countEl.textContent = target.toLocaleString();
-      return;
-    }
-    current += Math.ceil((target - current) / 8);
-    countEl.textContent = current.toLocaleString();
-  }, 60);
-
-  // Optionally try for a real count via GoatCounter or CountAPI (fallback gracefully)
-  fetch('https://api.countapi.xyz/hit/josephebinesar-portfolio/visits')
-    .then(r => r.json())
-    .then(data => {
-      if (data && data.value) {
-        const realCount = data.value;
-        localStorage.setItem('portfolio_visitor_count', realCount.toString());
-        let c = parseInt(countEl.textContent, 10);
-        const step = () => {
-          if (c >= realCount) { countEl.textContent = realCount.toLocaleString(); return; }
-          c += Math.ceil((realCount - c) / 6);
-          countEl.textContent = c.toLocaleString();
-          requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      }
-    })
-    .catch(() => {/* silently fail, use localStorage count */ });
-})();
-
-// ========================================
-// PARTICLE CANVAS â€“ Neural Network Style
+// PARTICLE CANVAS – Neural Network Style
 // ========================================
 (function initParticles() {
   const canvas = document.getElementById('particleCanvas');
@@ -288,85 +235,15 @@ const perfObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.perf-grid').forEach(el => perfObserver.observe(el));
 
 // ========================================
-// ACHIEVEMENTS SLIDER
+// SKILL ORBS – TOUCH & KEYBOARD SUPPORT
 // ========================================
-(function initAchievementsSlider() {
-  const slider = document.getElementById('achievementsSlider');
-  const prevBtn = document.getElementById('achieveSliderPrev');
-  const nextBtn = document.getElementById('achieveSliderNext');
-  const dotsContainer = document.getElementById('achieveDots');
-  if (!slider) return;
-
-  const slides = Array.from(slider.querySelectorAll('.achievement-slide'));
-  if (!slides.length) return;
-
-  let currentIndex = 0;
-  let autoPlay;
-
-  function getVisible() {
-    return window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
-  }
-
-  // Build dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.classList.add('slider-dot');
-    if (i === 0) dot.classList.add('active');
-    dot.setAttribute('aria-label', `Slide ${i + 1}`);
-    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
-    dotsContainer?.appendChild(dot);
-  });
-
-  function updateDots() {
-    const dots = dotsContainer?.querySelectorAll('.slider-dot');
-    dots?.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-  }
-
-  function goTo(index) {
-    const visible = getVisible();
-    const maxIndex = Math.max(0, slides.length - visible);
-    currentIndex = Math.max(0, Math.min(index, maxIndex));
-    const slideW = slides[0].offsetWidth + 20; // gap ~1.25rem
-    slider.scrollTo({ left: currentIndex * slideW, behavior: 'smooth' });
-    updateDots();
-  }
-
-  prevBtn?.addEventListener('click', () => { goTo(currentIndex - 1); resetAuto(); });
-  nextBtn?.addEventListener('click', () => { goTo(currentIndex + 1); resetAuto(); });
-
-  function startAuto() {
-    autoPlay = setInterval(() => {
-      const visible = getVisible();
-      const maxIndex = slides.length - visible;
-      currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
-      goTo(currentIndex);
-    }, 3500);
-  }
-
-  function resetAuto() { clearInterval(autoPlay); startAuto(); }
-  startAuto();
-
-  // Swipe support
-  let touchStartX = 0;
-  slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  slider.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) { diff > 0 ? goTo(currentIndex + 1) : goTo(currentIndex - 1); resetAuto(); }
+document.querySelectorAll('.skill-orb').forEach(orb => {
+  orb.addEventListener('touchstart', () => {
+    document.querySelectorAll('.skill-orb').forEach(k => { if (k !== orb) k.classList.remove('flipped'); });
+    orb.classList.toggle('flipped');
   }, { passive: true });
-
-  window.addEventListener('resize', () => goTo(0));
-})();
-
-// ========================================
-// SKILL KEYS â€“ TOUCH SUPPORT
-// ========================================
-document.querySelectorAll('.skill-key').forEach(key => {
-  key.addEventListener('touchstart', () => {
-    document.querySelectorAll('.skill-key').forEach(k => { if (k !== key) k.blur(); });
-    key.focus();
-  }, { passive: true });
-  key.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); key.focus(); }
+  orb.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); orb.classList.toggle('flipped'); }
   });
 });
 
